@@ -13,7 +13,7 @@
   </head>
   <body
     style="
-      background-image: linear-gradient(to right, black 5%, lavender 95%);
+      background-color: rgb(48, 47, 47);
       font-family: gotham rounded, arial;
     "
   >
@@ -37,7 +37,10 @@
             ></textarea>
             <div class="row mt-3">
               <div class="col">Word Count: <span id="wordCount">0</span></div>
-              <div class="col text-right">
+              <div class="col" style="text-align: center">
+                <button id="copyBtn" class="btn btn-primary">Copy</button>
+              </div>
+              <div class="col" style="text-align: right">
                 <button id="clearBtn" class="btn btn-danger">Clear</button>
               </div>
             </div>
