@@ -1,6 +1,7 @@
 const textField = document.getElementById("text");
 const wordCount = document.getElementById("wordCount");
 const clearBtn = document.getElementById("clearBtn");
+const copyBtn = document.getElementById("copyBtn");
 
 function countWord() {
   let text = textField.value;
@@ -23,3 +24,9 @@ textField.oninput = () => { // Keeping events in one place
 window.onload = () => { // Text is preserved during refresh so count words on start
 	countWord();
 }
+
+copyBtn.onclick = () => {
+  document.querySelector("textarea").select();
+  document.execCommand("copy");
+  alert("Text copied to clipboard");
+};
