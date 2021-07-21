@@ -14,19 +14,19 @@ function countWord() {
 }
 
 function textCheck() {
-  if (localStorage.getItem("text")) {
-    textField.value = localStorage.getItem("text");
+  if (sessionStorage.getItem("text")) {
+    textField.value = sessionStorage.getItem("text");
   } // displays saved text in text field
 }
 
 clearBtn.onclick = () => {
   textField.value = ""; // Removes all text
-  localStorage.removeItem("text");
+  sessionStorage.removeItem("text");
   countWord();
 };
 
 saveBtn.onclick = () => {
-  localStorage.setItem("text", textField.value);
+  sessionStorage.setItem("text", textField.value);
   countWord();
 };
 
