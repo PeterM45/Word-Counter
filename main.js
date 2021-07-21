@@ -37,7 +37,7 @@ textField.oninput = () => {
 
 window.onload = () => {
   // Text is preserved during refresh so count words on start
-  textCheck(); // runs funtion on load
+  textCheck(); // runs function on load
   countWord();
 };
 
