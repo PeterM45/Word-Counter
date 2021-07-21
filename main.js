@@ -5,25 +5,41 @@ const copyBtn = document.getElementById("copyBtn");
 
 function countWord() {
   let text = textField.value;
-	text = text.trim();
-	let words = text.split(/\s+/); // Use regex to filter out double spaces and other weirdness
-  wordCount.innerText = words.filter(word => { // Filter out "bad" words
-		return word; // Keep word if it evaluates to true (removes empty words)
-	}).length;
+  text = text.trim();
+  let words = text.split(/\s+/); // Use regex to filter out double spaces and other weirdness
+  wordCount.innerText = words.filter((word) => {
+    // Filter out "bad" words
+    return word; // Keep word if it evaluates to true (removes empty words)
+  }).length;
+}
+
+function textCheck() {
+  if (localStorage.getItem("text")) {
+    textField.value = localStorage.getItem("text");
+  } // displays saved text in text field
 }
 
 clearBtn.onclick = () => {
   textField.value = ""; // Removes all text
+  localStorage.removeItem("text");
   countWord();
 };
 
-textField.oninput = () => { // Keeping events in one place
-	countWord();
+saveBtn.onclick = () => {
+  localStorage.setItem("text", textField.value);
+  countWord();
 };
 
-window.onload = () => { // Text is preserved during refresh so count words on start
-	countWord();
-}
+textField.oninput = () => {
+  // Keeping events in one place
+  countWord();
+};
+
+window.onload = () => {
+  // Text is preserved during refresh so count words on start
+  textCheck(); // runs funtion on load
+  countWord();
+};
 
 copyBtn.onclick = () => {
   document.querySelector("textarea").select();
